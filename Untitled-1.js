@@ -2,7 +2,6 @@
 
 function jd_to_cal(date) {
     // Convert a Julian date to a calendar date.
-
     // Remove spaces from the date.
     var date = date.trim(" ");
 
@@ -23,15 +22,21 @@ function jd_to_cal(date) {
     else { 
         var julian_year = "201" + year 
     }
-    
+    // generate year of the julian date
     var julian_date = new Date(julian_year)
+    // get miliseconds of the julian date
     var julian_date_ml = julian_date.getTime()
+    // get the  day of the julian date
     var day_number = parseInt(date.slice(0, 3))
+    // multiply the day number by miliseconds of a day
     var mls_day = day_number * 86400000
+    // add the miliseconds of the julian date to the miliseconds of the day
     julian_date_ml = julian_date_ml + mls_day
+    // convert the miliseconds to a date
     var date_full = new Date(julian_date_ml)
+    // get the day of the date
     return date_full
 
 }
-X = labelData("4107 / 3450", "FORD", "model", "PRIMARY FLS");
+X = jd_to_cal("4107");
 console.log(X);
